@@ -1,0 +1,841 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700");
+@import url("https://fonts.googleapis.com/css?family=Vidaloka");
+header {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  z-index: 1;
+  z-index: 2;
+}
+
+header.homepage-header {
+  background: none !important;
+  position: relative;
+}
+
+header.homepage-header .navbar-brand img {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-animation: flip 2.3s 300ms both ease-in-out;
+          animation: flip 2.3s 300ms both ease-in-out;
+}
+
+@media only screen and (min-width: 992px) {
+  header.homepage-header {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  header {
+    background: url("/imgs/bg-food.jpg") no-repeat;
+    background-size: 100%;
+  }
+  header:not(.homepage-header)::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.23);
+    position: absolute;
+  }
+}
+
+header nav {
+  z-index: 3;
+  width: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+  header nav .navbar-brand.homepage-nav img {
+    width: 150px;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+  }
+}
+
+header nav .navbar-toggler {
+  z-index: 1;
+  position: relative;
+  height: 4rem !important;
+  border: none;
+}
+
+header nav .navbar-toggler .hamburger {
+  position: relative;
+  width: 2rem;
+  height: 3px;
+  background: black;
+  display: block;
+  z-index: 123;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+header nav .navbar-toggler .hamburger::after, header nav .navbar-toggler .hamburger::before {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 3px;
+  background: black;
+  display: block;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+header nav .navbar-toggler .hamburger::before {
+  top: -10px;
+}
+
+header nav .navbar-toggler .hamburger::after {
+  top: 10px;
+}
+
+header nav .navbar-toggler .hamburger.clicked {
+  background: rgba(0, 0, 0, 0);
+  -webkit-animation: clockwise 0.3s ease-out;
+          animation: clockwise 0.3s ease-out;
+}
+
+header nav .navbar-toggler .hamburger.clicked::before {
+  background: black;
+  top: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+header nav .navbar-toggler .hamburger.clicked::after {
+  background: black;
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+@-webkit-keyframes clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+
+@keyframes clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+
+header nav .navbar-brand img {
+  width: 100px;
+}
+
+header nav .nav-link {
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 992px) {
+  header nav .nav-link::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: white;
+    bottom: 0;
+    display: block;
+    -webkit-transition: width 0.5s ease;
+    transition: width 0.5s ease;
+  }
+  header nav .nav-link:hover::after {
+    width: 100%;
+    z-index: 2;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  header nav .nav-link {
+    border-radius: 10px;
+    font-size: 30px;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    color: white !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  header .collapse.show,
+  header .collapsing {
+    position: absolute;
+    color: black !important;
+    top: 88%;
+    background: white;
+    left: 0;
+    padding: 2px;
+    width: 100%;
+    z-index: 231;
+  }
+  header {
+    background-color: #fff;
+    position: relative;
+  }
+  header .navbar-brand img {
+    left: 0 !important;
+    top: 0 !important;
+    width: 60px !important;
+    -webkit-animation: none !important;
+            animation: none !important;
+  }
+  header .navbar-toggler {
+    color: black;
+  }
+}
+
+@-webkit-keyframes flip {
+  0% {
+    -webkit-transform: rotateY(0deg) translateX(-50%);
+            transform: rotateY(0deg) translateX(-50%);
+  }
+  70% {
+    -webkit-transform: rotateY(380deg) translateX(-50%);
+            transform: rotateY(380deg) translateX(-50%);
+  }
+  90% {
+    -webkit-transform: rotateY(350deg) translateX(-50%);
+            transform: rotateY(350deg) translateX(-50%);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg) translateX(-50%);
+            transform: rotateY(360deg) translateX(-50%);
+  }
+}
+
+@keyframes flip {
+  0% {
+    -webkit-transform: rotateY(0deg) translateX(-50%);
+            transform: rotateY(0deg) translateX(-50%);
+  }
+  70% {
+    -webkit-transform: rotateY(380deg) translateX(-50%);
+            transform: rotateY(380deg) translateX(-50%);
+  }
+  90% {
+    -webkit-transform: rotateY(350deg) translateX(-50%);
+            transform: rotateY(350deg) translateX(-50%);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg) translateX(-50%);
+            transform: rotateY(360deg) translateX(-50%);
+  }
+}
+
+main.homepage {
+  margin-top: 0 !important;
+  position: relative;
+  height: auto;
+}
+
+main.homepage .search-and-image {
+  z-index: 0;
+  background: transparent !important;
+  margin: 0 !important;
+  position: relative;
+}
+
+main.homepage .search-and-image .cover-image {
+  width: 100%;
+  position: relative;
+  height: 12rem;
+  background: url("/imgs/bg-food.jpg") no-repeat;
+  -webkit-filter: blur(1.8px);
+          filter: blur(1.8px);
+  background-position: top;
+  background-size: cover;
+  z-index: 0;
+  margin: 0 auto !important;
+  background-attachment: fixed;
+}
+
+@media only screen and (max-width: 768px) {
+  main.homepage .search-and-image .cover-image {
+    background-size: 160%;
+  }
+}
+
+main.homepage .search-and-image .cover-image::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.23);
+}
+
+main.homepage .search-and-image .search-bar-wrapper {
+  position: absolute;
+  width: 60%;
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  z-index: 10;
+}
+
+@media only screen and (max-width: 991px) {
+  main.homepage .search-and-image .search-bar-wrapper {
+    width: 100%;
+    bottom: 50%;
+    -webkit-transform: translate(-50%, 30%);
+            transform: translate(-50%, 30%);
+    -webkit-transform-origin: center;
+            transform-origin: center;
+  }
+  main.homepage .search-and-image .search-bar-wrapper form {
+    width: 90% !important;
+  }
+}
+
+main.homepage .search-and-image .search-bar-wrapper .search-bar {
+  width: 60%;
+  -webkit-transition: -webkit-transform 150ms ease-in;
+  transition: -webkit-transform 150ms ease-in;
+  transition: transform 150ms ease-in;
+  transition: transform 150ms ease-in, -webkit-transform 150ms ease-in;
+}
+
+main.homepage .search-and-image .search-bar-wrapper .search-bar.focused {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+@media only screen and (max-width: 768px) {
+  main.homepage .search-and-image .search-bar-wrapper .search-bar.focused {
+    -webkit-transform: scale(1.04);
+            transform: scale(1.04);
+  }
+}
+
+main.homepage .search-and-image .search-bar-wrapper .search-bar input {
+  width: 80%;
+  -webkit-box-shadow: 7px 5px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 7px 5px 3px rgba(0, 0, 0, 0.4);
+}
+
+main.homepage .search-and-image .search-bar-wrapper .search-bar input:focus {
+  border: none;
+  outline-style: none;
+}
+
+main.homepage .search-and-image .search-bar-wrapper .search-bar button {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+main.homepage .card-row .card:nth-child(1) {
+  -webkit-animation: fadeIn 1s 0.14286s both ease-in-out;
+          animation: fadeIn 1s 0.14286s both ease-in-out;
+}
+
+main.homepage .card-row .card:nth-child(2) {
+  -webkit-animation: fadeIn 1s 0.28571s both ease-in-out;
+          animation: fadeIn 1s 0.28571s both ease-in-out;
+}
+
+main.homepage .card-row .card:nth-child(3) {
+  -webkit-animation: fadeIn 1s 0.42857s both ease-in-out;
+          animation: fadeIn 1s 0.42857s both ease-in-out;
+}
+
+main.homepage .card-row .card:nth-child(4) {
+  -webkit-animation: fadeIn 1s 0.57143s both ease-in-out;
+          animation: fadeIn 1s 0.57143s both ease-in-out;
+}
+
+main.homepage .card-row .card:nth-child(5) {
+  -webkit-animation: fadeIn 1s 0.71429s both ease-in-out;
+          animation: fadeIn 1s 0.71429s both ease-in-out;
+}
+
+main.homepage .card-row .card:nth-child(6) {
+  -webkit-animation: fadeIn 1s 0.85714s both ease-in-out;
+          animation: fadeIn 1s 0.85714s both ease-in-out;
+}
+
+main.homepage .card {
+  background-color: #fff;
+  padding: 0;
+  border: none;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  cursor: pointer;
+  border-radius: 50px;
+  position: relative;
+  height: 250px;
+}
+
+main.homepage .card a {
+  height: 100%;
+  width: 100%;
+  border-radius: 50px;
+}
+
+main.homepage .card a::before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: white;
+  z-index: 2;
+}
+
+main.homepage .card a::after {
+  left: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 50px;
+}
+
+main.homepage .card:nth-child(1) a {
+  background: url("../../imgs/kött.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main.homepage .card:nth-child(1) a::before {
+  content: 'Kött';
+}
+
+main.homepage .card:nth-child(2) a {
+  background: url("../../imgs/kyckling.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main.homepage .card:nth-child(2) a::before {
+  content: 'Kyckling';
+}
+
+main.homepage .card:nth-child(3) a {
+  background: url("../../imgs/fisk.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main.homepage .card:nth-child(3) a::before {
+  content: 'Fisk';
+}
+
+main.homepage .card:nth-child(4) a {
+  background: url("../../imgs/vegetarian.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main.homepage .card:nth-child(4) a::before {
+  content: 'Vegetariskt';
+}
+
+main.homepage .card:nth-child(5) a {
+  background: url("../../imgs/dessert.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main.homepage .card:nth-child(5) a::before {
+  content: 'Desserter';
+}
+
+main.homepage .card:nth-child(6) a {
+  background: url("../../imgs/pasta-start.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main.homepage .card:nth-child(6) a::before {
+  content: 'Pasta';
+}
+
+@media only screen and (min-width: 992px) {
+  main.homepage .card:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    z-index: 1000;
+  }
+}
+
+main.homepage .card img {
+  width: 100%;
+  height: 80%;
+  -webkit-box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+  max-width: 100%;
+  border-radius: 50px;
+}
+
+main.homepage .card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main.homepage .home-bg {
+  background: url(../imgs/food-bg.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+main.homepage .home-text {
+  color: white;
+  text-shadow: 2px 2px black;
+  border-radius: 10px;
+  font-size: 40px;
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    max-width: 70% !important;
+    margin-bottom: 10px !important;
+  }
+  .card-body {
+    padding-bottom: 0;
+  }
+}
+
+.card-row {
+  max-width: 100% !important;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+li {
+  margin: 5px;
+}
+
+.recipe-container {
+  background-color: #fff;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.dishimg {
+  width: 350px;
+  border-radius: 50px;
+}
+
+.formPersoner {
+  width: 180px;
+}
+
+.back-btn {
+  border-radius: 10px;
+}
+
+.AllRecipes .card {
+  margin-bottom: 5px;
+  border-radius: 30px;
+}
+
+.AllRecipes .card img {
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .AllRecipes .card {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    width: 100%;
+    max-width: 100% !important;
+  }
+}
+
+main + .create-recipe {
+  height: 100%;
+}
+
+.container.create-recipe .fields-error,
+.container.create-recipe .noimage-error,
+.container.create-recipe .tillagt-alert {
+  display: none;
+}
+
+.container.create-recipe a {
+  cursor: pointer !important;
+}
+
+.container.create-recipe a:focus {
+  outline: 0 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.container.create-recipe .remove-image-btn {
+  display: none;
+}
+
+.container.create-recipe .remove-image-btn .fas.fa-trash-alt {
+  padding-left: 10px;
+}
+
+.container.create-recipe .remove-instruction-btn,
+.container.create-recipe .edit-instruction-btn {
+  background-color: transparent;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  border: none !important;
+  margin-right: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+.container.create-recipe .remove-instruction-btn .fas.fa-trash-alt,
+.container.create-recipe .edit-instruction-btn .fas.fa-trash-alt {
+  color: #920000;
+}
+
+.container.create-recipe .remove-instruction-btn,
+.container.create-recipe .edit-instruction-btn {
+  display: block;
+}
+
+.container.create-recipe .title-input {
+  font-family: 'Vidaloka', serif;
+}
+
+.container.create-recipe .file-input-wrapper {
+  width: 100%;
+  height: 15rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.container.create-recipe .file-input-wrapper .input-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.container.create-recipe .file-input-wrapper input[type='file'] {
+  visibility: hidden;
+  width: 10px;
+}
+
+.container.create-recipe .file-input-wrapper img.preview-image {
+  max-height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .container.create-recipe .image-container {
+    margin-bottom: 10px;
+  }
+}
+
+.container.create-recipe button.quantity-control-button {
+  background-color: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
+.container.create-recipe button.quantity-control-button:focus {
+  outline: 0;
+}
+
+.container.create-recipe button.quantity-control-button .fas.fa-plus {
+  color: green;
+  margin-right: auto;
+  font-size: 30px;
+}
+
+.container.create-recipe button.quantity-control-button.trash {
+  margin-left: auto;
+}
+
+.container.create-recipe button.quantity-control-button.trash .fas.fa-trash-alt {
+  color: #920000;
+}
+
+.container.create-recipe button.quantity-control-button .fas.fa-minus {
+  color: red;
+  margin-right: auto;
+  font-size: 30px;
+}
+
+.container.create-recipe .ingrediens-result {
+  height: 16.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container.create-recipe .ingrediens-result .list-group .list-group-item .quantity-controllers {
+  width: 60%;
+  text-align: right;
+}
+
+.container.create-recipe .ingrediens-list .wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.container.create-recipe .ingrediens-list .list-group {
+  height: 17rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item {
+  list-style-type: disc !important;
+  margin-bottom: 0.8rem;
+  border: none;
+  max-height: 20rem;
+  border-bottom: 3px solid black !important;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item label {
+  margin-bottom: 0 !important;
+  margin-right: 0.2rem;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item input {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item input::-webkit-inner-spin-button, .container.create-recipe .ingrediens-list .list-group-item input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item input.volume {
+  width: 70px !important;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item select {
+  margin-left: 5px;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item .motsvarande {
+  width: 20%;
+}
+
+.container.create-recipe .ingrediens-list .list-group-item a {
+  margin-left: -24px;
+}
+
+.container.create-recipe .ingrediens-list input[readonly] {
+  background: white !important;
+  border: 0;
+  z-index: 0;
+}
+
+.container.create-recipe .ingrediens-list input[readonly]:focus {
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: none;
+}
+
+.container.create-recipe .add-instructions-wrapper .current-step {
+  text-decoration: underline;
+  color: #bb3232;
+}
+
+.container.create-recipe .add-instructions-wrapper textarea {
+  width: 100%;
+}
+
+.container.create-recipe .add-instructions-wrapper .add-instruction-btn {
+  width: 10rem;
+}
+
+.container.create-recipe .added-instructions .list-group {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 17rem;
+}
+
+.container.create-recipe .added-instructions .list-group .list-group-item {
+  border: none;
+  word-wrap: break-all;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  background: #fff;
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body a {
+  font-family: 'Vidaloka', serif;
+  font-weight: 900;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=style.css.map */
