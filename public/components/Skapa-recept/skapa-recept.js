@@ -133,7 +133,7 @@ class CreateRecipe {
       instructions,
       categories: this.formData.categories
     };
-    fetch(`http://${window.location.host}/api/recept`, {
+    fetch(`https://${window.location.host}/api/recept`, {
       method: 'POST',
       body: JSON.stringify(dataToSend),
       headers: {
@@ -157,7 +157,7 @@ class CreateRecipe {
       formData.append('id', id);
       formData.append('file', file);
 
-      fetch(`http://${window.location.host}/api/uploadimage`, {
+      fetch(`https://${window.location.host}/api/uploadimage`, {
         method: 'POST',
         body: formData,
         'Content-Type': undefined
@@ -270,7 +270,7 @@ class CreateRecipe {
     // If query is empty, then return.
     if (!query.length) return;
 
-    fetch(`http://${window.location.host}/api/livsmedel/${query}`)
+    fetch(`https://${window.location.host}/api/livsmedel/${query}`)
       .then(res => res.json())
       .then(res => this.renderIngrediensSearchResult(res));
   }
