@@ -1,1 +1,1 @@
-# heroku-wcag-test
+# WCAG
