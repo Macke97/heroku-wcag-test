@@ -590,6 +590,11 @@ main + .create-recipe {
   height: 100%;
 }
 
+.container.create-recipe .wrapper-spinner img.spinner {
+  height: 20px;
+  display: none;
+}
+
 .container.create-recipe .fields-error,
 .container.create-recipe .noimage-error,
 .container.create-recipe .tillagt-alert {
@@ -786,6 +791,10 @@ main + .create-recipe {
   -webkit-box-shadow: none;
           box-shadow: none;
   border-color: none;
+}
+
+.container.create-recipe .add-instructions-wrapper .empty-textfield-error {
+  display: none;
 }
 
 .container.create-recipe .add-instructions-wrapper .current-step {
