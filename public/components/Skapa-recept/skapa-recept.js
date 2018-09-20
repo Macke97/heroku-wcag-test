@@ -125,6 +125,8 @@ class CreateRecipe {
   }
 
   postRecipe() {
+    // Show the spinner
+    $('.wrapper-spinner .spinner').show();
     console.log(this.formData);
     const instructions = this.formData.instructions.map(i => i.text);
     const dataToSend = {
@@ -133,7 +135,7 @@ class CreateRecipe {
       instructions,
       categories: this.formData.categories
     };
-    fetch(`https://${window.location.host}/api/recept`, {
+    fetch(`http://${window.location.host}/api/recept`, {
       method: 'POST',
       body: JSON.stringify(dataToSend),
       headers: {
@@ -157,7 +159,7 @@ class CreateRecipe {
       formData.append('id', id);
       formData.append('file', file);
 
-      fetch(`https://${window.location.host}/api/uploadimage`, {
+      fetch(`http://${window.location.host}/api/uploadimage`, {
         method: 'POST',
         body: formData,
         'Content-Type': undefined
@@ -165,6 +167,8 @@ class CreateRecipe {
         .then(res => res.json())
         .then(res => {
           console.log(res);
+          // Hide the loading spinner
+          $('.wrapper-spinner .spinner').hide();
           this.resetForm();
         });
     };
@@ -224,11 +228,9 @@ class CreateRecipe {
       .trim();
 
     if (text.length < 1) {
-      $('.current-step').after(
-        '<p class="empty-textfield-error mt-2 text-danger">Du kan inte lägga till en tom instruktion!</p>'
-      );
+      $('.empty-textfield-error').show();
       setTimeout(() => {
-        $('.empty-textfield-error').remove();
+        $('.empty-textfield-error').hide();
       }, 2000);
       return;
     }
@@ -270,7 +272,7 @@ class CreateRecipe {
     // If query is empty, then return.
     if (!query.length) return;
 
-    fetch(`https://${window.location.host}/api/livsmedel/${query}`)
+    fetch(`http://${window.location.host}/api/livsmedel/${query}`)
       .then(res => res.json())
       .then(res => this.renderIngrediensSearchResult(res));
   }
