@@ -13,6 +13,8 @@ $(document).on('click', 'a.pop', function(e) {
 });
 
 function changePage() {
+  $('main').empty();
+
   /**
    * Close the collapsed nav on page change
    * and always scroll to top
@@ -51,12 +53,31 @@ function changePage() {
     $('header').removeClass('homepage-header');
   }
 
-  // if (url == '/recipe') {
-  //   new Recipe();
-  // }
+  $(document).on('click', '.homepage .card', function(e) {
+    const category = $(this).data('category');
+    setTimeout(() => {
+      $(`.form-check-input[value="${category}"]`)
+        .prop('checked', true)
+        .trigger('change');
+    }, 1000);
+  });
+
+  if (url == '/all-recipes') {
+    $('main').addClass('AllRecipes');
+  } else {
+    $('main').removeClass('AllRecipes');
+  }
+
+  /*/test of classremove
+  if (url == '/recipe') {
+    new Recipe();
+  }*/
 
   if (url == '/create-recipe') {
     new CreateRecipe();
+    $('main').addClass('CreateRecipe');
+  } else {
+    $('main').removeClass('CreateRecipe');
   }
 
   if (url == '/all-recipes') {
@@ -66,9 +87,13 @@ function changePage() {
   const regex = /^(\/recipe)(\/\w*)$/i;
 
   if (regex.test(url)) {
+    console.log(regex.test(url));
     let match = regex.exec(url);
     let param = match[2].split('/')[1];
     new Recipe(param);
+    $('main').addClass('recipe');
+  } else {
+    $('main').removeClass('recipe');
   }
 }
 

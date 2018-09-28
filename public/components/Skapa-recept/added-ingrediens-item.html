@@ -1,22 +1,25 @@
-Object.assign(CreateRecipe.prototype, {addedIngrediensItem(name, id, volume, inGram) { return`
+Object.assign(CreateRecipe.prototype, {addedIngrediensItem(name, id, volume, inGram, unit) { return`
 
-<li class="list-group-item">
+<li class="list-group-item mx-auto">
   <div class="row">
     <div class="col-12">
-      <div class="form-inline">
-        <label for="${id}" class="pb-3 w-50">${name} </label>
-        <div class="pb-3 row ml-auto">
-          <input id="${id}" type="number" class="volume form-control" required value="${volume}">
-          <select name="unit" id="${id}-select" class="motsvarande-select">
-            <option value="dl">dl</option>
-            <option value="l">l</option>
-            <option value="g">g</option>
-          </select>
-        </div>
+      <div class="d-flex align-items-center">
+        <label for="${id}" class="pb-3">${name} </label>
+        <input id="${id}" type="number" class="volume form-control" required value="${volume}">
+        <select name="unit" id="${id}-select" class="motsvarande-select">
+          <option value="st" ${unit=='st' ? 'selected' : null}>st</option>
+          <option value="g" ${unit=='g' ? 'selected' : null}>g</option>
+          <option value="ml" ${unit=='ml' ? 'selected' : null}>ml</option>
+          <option value="dl" ${unit=='dl' ? 'selected' : null}>dl</option>
+          <option value="l" ${unit=='l' ? 'selected' : null}>l</option>
+          <option value="msk" ${unit=='msk' ? 'selected' : null}>msk</option>
+          <option value="tsk" ${unit=='tsk' ? 'selected' : null}>tsk</option>
+          <option value="krm" ${unit=='krm' ? 'selected' : null}>krm</option>
+        </select>
       </div>
     </div>
-    <div class="col-12">
-      <div class="form-inline motsvarande-wrapper">
+    <div class="col-12 mt-5">
+      <div class="form-inline motsvarande-wrapper ${unit == 'g' ? 'hide-wrapper' : ''}">
         <a tabindex="0" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="För att ge korrekt näringsinnehåll behöver du ange vad mängden du angett motsvarar i gram"
           data-placement="right" class="mr-2">
           <i class="fas fa-question-circle"></i>

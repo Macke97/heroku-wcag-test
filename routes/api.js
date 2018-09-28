@@ -14,8 +14,8 @@ cloudinary.config({
 
 const storage = cloudinaryStorage({
   cloudinary: cloudinary,
-  folder: 'test',
-  allowedFormats: ['jpg', 'png'],
+  folder: 'recipes',
+  allowedFormats: ['jpg', 'png', 'gif'],
   filename: function(req, file, cb) {
     cb(undefined, req.body.id);
   }
@@ -30,7 +30,8 @@ router.post('/recept', (req, res) => {
     livsmedel: [...req.body.ingrediens],
     instructions: [...req.body.instructions],
     categories: req.body.categories,
-    persons: req.body.persons
+    portions: req.body.portions,
+    description: req.body.description
   })
     .save()
     .then(recipe => {
@@ -75,42 +76,39 @@ router.get('/all-recipes', (req, res) => {
     .then(result => res.json(result));
 });
 
-// Recept.findById(recipe.id).populate('livsmedel.livsmedelId')
-//   .then(result => res.json(result));
+router.get('/all-recipes/:name', (req, res) => {
+  const query = req.params.name;
+  Recept.find({
+    $or: [
+      // { title: { $regex: query, $options: 'i' } }, { categories: { $regex: query, $options: 'i' } }]
+      { title: { $regex: query, $options: 'i' } }
+    ]
+  }).then(result => res.json(result));
+});
 
-// 5b95065f231998101e1df6dd 5b95065f231998101e1df245
+router.get('/recipe/:id', (req, res) => {
+  const query = req.params.id;
+  Recept.findById(query)
+    .populate('livsmedel.livsmedelId')
+    .then(recipe => res.json(recipe));
+});
+
+router.get('/first-time', (req, res) => {
+  let maxAge = 604800000; // <-- This is one week
+  if (req.cookies.visited === undefined) {
+    // If no cookie then return firstTime true and set cookie
+    res.cookie('visited', true, { maxAge, httpOnly: true });
+    res.json({ firstTime: true });
+  } else if (req.cookies.visited) {
+    /**
+     * If we have a visited cookie that's true
+     * then we want to return firstTime false
+     * and then re-set the cookie to make its
+     * maxAge last longer
+     */
+    res.cookie('visited', true, { maxAge, httpOnly: true });
+    res.json({ firstTime: false });
+  }
+});
 
 module.exports = router;
-
-// imgPath: req.body.persons,
-// title: req.body.persons,
-// livsmedel: [
-//   {
-//     id: {
-//       type: Schema.Type.ObjectId,
-//       ref: 'Livsmedel'
-//     },
-//     quantity: Number
-//   }
-// ],
-// instructions: [String],
-// categories: [String],
-// persons: Number
-
-// const json = {
-//   imgPath: '',
-//   title: 'Nisse Spagetti',
-//   livsmedel: [
-//     {
-//       id: 127382197389,
-//       quantity: 3
-//     },
-//     {
-//       id: 23213123213,
-//       quantity: 2
-//     }
-//   ],
-//   instructions: ['Koka ägg', 'Stek bacon'],
-//   categories: req.body.categories,
-//   persons: req.body.persons
-// }
